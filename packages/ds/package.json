@@ -1,8 +1,9 @@
 {
-  "name": "@repo/ui",
+  "name": "@repo/ds",
   "version": "0.0.0",
   "exports": {
     ".": "./index.ts",
+    "./style.css": "./style.css",
     "./counter": "./components/counter.ts",
     "./header": "./components/header.ts",
     "./setup-counter": "./utils/counter.ts"
