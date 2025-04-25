@@ -4,9 +4,8 @@
   "exports": {
     ".": "./index.ts",
     "./style.css": "./style.css",
-    "./counter": "./components/counter.ts",
-    "./header": "./components/header.ts",
-    "./setup-counter": "./utils/counter.ts"
+    "./components/tabs.css": "./components/tabs.css",
+    "./tabs": "./components/tabs.tsx"
   },
   "license": "MIT",
   "scripts": {
