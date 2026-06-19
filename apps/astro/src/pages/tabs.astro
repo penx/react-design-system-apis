@@ -1,0 +1,22 @@
+---
+import Component from "./_index.tsx";
+---
+
+<html lang="en">
+  <body>
+    <!-- Distinct ids: two instances on one page must not share a radio-group
+         name (each Astro render restarts useId()), or they would group together
+         and emit duplicate DOM ids. -->
+
+    <!-- SSR HTML, no hydration: the radio fallback renders, then <ds-tabs> upgrades it. -->
+    <Component id="ssr" />
+
+    <!-- React island path: hydrates and renders the same markup. -->
+    <Component client:idle id="island" />
+
+    <!-- Registers <ds-tabs> so the un-hydrated instance above upgrades to a tablist. -->
+    <script>
+      import "@repo/ds/tabs/define";
+    </script>
+  </body>
+</html>
