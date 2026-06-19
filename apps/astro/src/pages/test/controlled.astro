@@ -1,0 +1,13 @@
+---
+import ControlledTabs from "../../components/ControlledTabs.tsx";
+---
+
+<html lang="en">
+  <body>
+    <ControlledTabs client:load id="cv" preHydration="ignore" />
+    <ControlledTabs client:load id="cs" preHydration="report" />
+    <script>
+      import "@repo/ds/tabs/define";
+    </script>
+  </body>
+</html>

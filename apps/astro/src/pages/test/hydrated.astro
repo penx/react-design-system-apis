@@ -1,0 +1,14 @@
+---
+import TabsDemo from "../../components/TabsDemo.tsx";
+---
+
+<html lang="en">
+  <body>
+    <!-- Hydrated islands with explicit, distinct ids (independent). One vertical. -->
+    <TabsDemo client:load id="h" />
+    <TabsDemo client:load id="v" orientation="vertical" />
+    <script>
+      import "@repo/ds/tabs/define";
+    </script>
+  </body>
+</html>
