@@ -1,6 +1,30 @@
-.tabs-content {
-    display: none;
+/*
+ * Presentational only. Under JS the element sets `hidden`/`data-state`; before
+ * upgrade the hidden radios drive visibility via `:has(> input:checked)`, with
+ * no URL change.
+ */
+
+.tabs-root {
+  display: block;
 }
-.tabs-content:has(> input:checked) {
-    display: block;
+
+ds-tabs [data-tabs-list] {
+  display: flex;
+  gap: 10px;
+}
+
+ds-tabs [data-tabs-trigger] {
+  color: inherit;
+}
+
+ds-tabs [data-tabs-trigger][data-state="active"] {
+  text-decoration: underline;
+}
+
+/* No-JS fallback: the checked radio's panel shows; no active-trigger styling. */
+ds-tabs:not(:defined) [data-tabs-content] {
+  display: none;
+}
+ds-tabs:not(:defined) [data-tabs-content]:has(> input:checked) {
+  display: block;
 }

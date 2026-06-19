@@ -5,21 +5,22 @@
     ".": "./index.ts",
     "./style.css": "./style.css",
     "./components/tabs.css": "./components/tabs.css",
-    "./tabs": "./components/tabs.tsx"
+    "./tabs": "./components/tabs.tsx",
+    "./tabs/define": "./components/ds-tabs.ts"
   },
   "license": "MIT",
   "scripts": {
     "lint": "eslint \"**/*.ts\""
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.2",
+    "react": "^19",
+    "react-dom": "^19",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
