@@ -4,22 +4,35 @@
   "exports": {
     ".": "./index.ts",
     "./style.css": "./style.css",
-    "./components/tabs.css": "./components/tabs.css",
-    "./tabs": "./components/tabs.tsx"
+    "./components/tabs-radio/tabs-radio.css": "./components/tabs-radio/tabs-radio.css",
+    "./tabs-radio": "./components/tabs-radio/tabs-radio.tsx",
+    "./components/tabs-details/tabs-details.css": "./components/tabs-details/tabs-details.css",
+    "./tabs-details": "./components/tabs-details/tabs-details.tsx",
+    "./components/tabs-element/tabs-element.css": "./components/tabs-element/tabs-element.css",
+    "./tabs-element": "./components/tabs-element/tabs-element.tsx",
+    "./tabs-element/define": "./components/tabs-element/ds-tabs.ts",
+    "./components/tabs-element-target/tabs-element-target.css": "./components/tabs-element-target/tabs-element-target.css",
+    "./tabs-element-target": "./components/tabs-element-target/tabs-element-target.tsx",
+    "./tabs-element-target/define": "./components/tabs-element-target/ds-tabs-target.ts",
+    "./components/tabs-target/tabs-target.css": "./components/tabs-target/tabs-target.css",
+    "./tabs-target": "./components/tabs-target/tabs-target.tsx",
+    "./components/tabs-element-radio/tabs-element-radio.css": "./components/tabs-element-radio/tabs-element-radio.css",
+    "./tabs-element-radio": "./components/tabs-element-radio/tabs-element-radio.tsx",
+    "./tabs-element-radio/define": "./components/tabs-element-radio/ds-tabs-radio.ts"
   },
   "license": "MIT",
   "scripts": {
     "lint": "eslint \"**/*.ts\""
   },
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18"
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
   },
   "devDependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "react": "^19",
+    "react-dom": "^19",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "eslint": "^8.57.0",

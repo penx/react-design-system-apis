@@ -1,0 +1,42 @@
+/*
+ * Presentational only. Panel visibility under JS is set by the element
+ * (`hidden`); the active trigger keys off data-state. Before upgrade, the
+ * :target rules below provide the no-JS fallback.
+ */
+
+.tabs-element-target-root {
+  display: block;
+}
+
+ds-tabs-target [data-tabs-list] {
+  display: flex;
+  gap: 10px;
+}
+
+ds-tabs-target [data-tabs-trigger] {
+  color: inherit;
+  text-decoration: none;
+}
+
+ds-tabs-target [data-tabs-trigger][data-state="active"] {
+  text-decoration: underline;
+}
+
+/*
+ * No-JS fallback (before the element upgrades): anchors target their panel id,
+ * so :target drives selection. Shows the data-default panel until one is
+ * targeted. Works when the parts share an id (always in JSX; single instance in
+ * .astro via the default base; multiple .astro instances via per-part `id`).
+ */
+ds-tabs-target:not(:defined) [data-tabs-content] {
+  display: none;
+}
+ds-tabs-target:not(:defined) [data-tabs-content][data-default] {
+  display: block;
+}
+ds-tabs-target:not(:defined):has([data-tabs-content]:target:not([data-default])) [data-tabs-content][data-default] {
+  display: none;
+}
+ds-tabs-target:not(:defined) [data-tabs-content]:target {
+  display: block;
+}

@@ -1,0 +1,6 @@
+.tabs-radio-content {
+    display: none;
+}
+.tabs-radio-content:has(> input:checked) {
+    display: block;
+}

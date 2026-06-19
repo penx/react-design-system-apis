@@ -1,0 +1,27 @@
+/*
+ * Pure :target tabs. No element, no JS - these rules are always in effect.
+ */
+
+.tabs-target-root [data-tabs-list] {
+  display: flex;
+  gap: 10px;
+}
+
+.tabs-target-trigger {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tabs-target-content {
+  display: none;
+}
+.tabs-target-content[data-default] {
+  display: block;
+}
+/* Hide the default only when a NON-default panel is targeted. */
+.tabs-target-root:has(.tabs-target-content:target:not([data-default])) .tabs-target-content[data-default] {
+  display: none;
+}
+.tabs-target-content:target {
+  display: block;
+}

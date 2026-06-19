@@ -1,9 +1,182 @@
 ---
 import Component from "./index.tsx";
+import { TabsElement, TabsElementTarget, TabsElementRadio } from "@repo/ds";
 ---
 
 <html lang="en">
   <body>
-    <Component />
+    <section>
+      <h1>1. client:only="react"</h1>
+      <p>
+        No SSR HTML - React renders and hydrates this entirely in the browser.
+      </p>
+      <Component client:only="react" />
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>2. client:idle</h1>
+      <p>Server-rendered, then React hydrates when the browser goes idle.</p>
+      <Component client:idle />
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>3. no directive</h1>
+      <p>
+        Server-rendered only - React never ships or hydrates in the browser.
+      </p>
+      <Component />
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>
+        4. TabsElement - parts composed directly in this .astro file
+      </h1>
+      <p>
+        The compound parts are authored here in the .astro template, not inside
+        a single .tsx. Astro renders each React part as its own render, so there
+        is no shared React tree - but TabsElement needs none: the &lt;ds-tabs&gt;
+        element correlates triggers to panels by their `data-value` and mints
+        ids/roles at runtime, so it composes in .astro with no per-part id (any
+        number of instances). Its trade-off is no no-JS fallback.
+      </p>
+      <TabsElement.Root defaultValue="account">
+        <TabsElement.List>
+          <TabsElement.Trigger value="account"
+            >Account</TabsElement.Trigger
+          >
+          <TabsElement.Trigger value="documents"
+            >Documents</TabsElement.Trigger
+          >
+          <TabsElement.Trigger value="settings"
+            >Settings</TabsElement.Trigger
+          >
+        </TabsElement.List>
+
+        <TabsElement.Content value="account">
+          Make changes to your account.
+        </TabsElement.Content>
+
+        <TabsElement.Content value="documents">
+          Access and update your documents.
+        </TabsElement.Content>
+
+        <TabsElement.Content value="settings">
+          Edit your profile or update contact information.
+        </TabsElement.Content>
+      </TabsElement.Root>
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>
+        5. TabsElementTarget - two instances composed in .astro, ids via per-part
+        props
+      </h1>
+      <p>
+        Composed directly in .astro (no shared React tree), so each part takes an
+        explicit <code>id</code> instead of Context. Two instances with distinct
+        ids prove the no-JS :target fallback works without colliding - the case a
+        single default base can't cover.
+      </p>
+
+      <TabsElementTarget.Root id="astroA" defaultValue="account">
+        <TabsElementTarget.List>
+          <TabsElementTarget.Trigger id="astroA" value="account"
+            >Account</TabsElementTarget.Trigger
+          >
+          <TabsElementTarget.Trigger id="astroA" value="documents"
+            >Documents</TabsElementTarget.Trigger
+          >
+        </TabsElementTarget.List>
+        <TabsElementTarget.Content id="astroA" value="account" default={true}
+          >Make changes to your account.</TabsElementTarget.Content
+        >
+        <TabsElementTarget.Content id="astroA" value="documents"
+          >Access and update your documents.</TabsElementTarget.Content
+        >
+      </TabsElementTarget.Root>
+
+      <TabsElementTarget.Root id="astroB" defaultValue="profile">
+        <TabsElementTarget.List>
+          <TabsElementTarget.Trigger id="astroB" value="profile"
+            >Profile</TabsElementTarget.Trigger
+          >
+          <TabsElementTarget.Trigger id="astroB" value="billing"
+            >Billing</TabsElementTarget.Trigger
+          >
+        </TabsElementTarget.List>
+        <TabsElementTarget.Content id="astroB" value="profile" default={true}
+          >Edit your profile.</TabsElementTarget.Content
+        >
+        <TabsElementTarget.Content id="astroB" value="billing"
+          >Manage billing.</TabsElementTarget.Content
+        >
+      </TabsElementTarget.Root>
+    </section>
+
+    <hr />
+
+    <section>
+      <h1>6. TabsElementRadio - two instances composed in .astro</h1>
+      <p>
+        Same .astro composition as section 5, but the no-JS fallback is a hidden
+        radio group instead of :target. Each instance has its own radio group and
+        never touches the URL, so both can hold independent selections without JS
+        - the "only one :target per page" limit from section 5 does not apply.
+      </p>
+
+      <TabsElementRadio.Root id="radioA" defaultValue="account">
+        <TabsElementRadio.List>
+          <TabsElementRadio.Trigger id="radioA" value="account"
+            >Account</TabsElementRadio.Trigger
+          >
+          <TabsElementRadio.Trigger id="radioA" value="documents"
+            >Documents</TabsElementRadio.Trigger
+          >
+        </TabsElementRadio.List>
+        <TabsElementRadio.Content id="radioA" value="account" default={true}
+          >Make changes to your account.</TabsElementRadio.Content
+        >
+        <TabsElementRadio.Content id="radioA" value="documents"
+          >Access and update your documents.</TabsElementRadio.Content
+        >
+      </TabsElementRadio.Root>
+
+      <TabsElementRadio.Root id="radioB" defaultValue="profile">
+        <TabsElementRadio.List>
+          <TabsElementRadio.Trigger id="radioB" value="profile"
+            >Profile</TabsElementRadio.Trigger
+          >
+          <TabsElementRadio.Trigger id="radioB" value="billing"
+            >Billing</TabsElementRadio.Trigger
+          >
+        </TabsElementRadio.List>
+        <TabsElementRadio.Content id="radioB" value="profile" default={true}
+          >Edit your profile.</TabsElementRadio.Content
+        >
+        <TabsElementRadio.Content id="radioB" value="billing"
+          >Manage billing.</TabsElementRadio.Content
+        >
+      </TabsElementRadio.Root>
+    </section>
+
+    <!--
+      Registers the custom-element custom elements. They self-upgrade the
+      server-rendered markup independently of React, so the custom-element tabs
+      are interactive even in the non-hydrated (#3) island. Plain scripts, not
+      client:* directives.
+    -->
+    <script>
+      import "@repo/ds/tabs-element/define";
+      import "@repo/ds/tabs-element-target/define";
+      import "@repo/ds/tabs-element-radio/define";
+    </script>
   </body>
 </html>

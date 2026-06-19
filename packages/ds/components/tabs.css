@@ -1,6 +1,0 @@
-.tabs-content {
-    display: none;
-}
-.tabs-content:has(> input:checked) {
-    display: block;
-}

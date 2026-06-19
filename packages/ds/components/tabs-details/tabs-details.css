@@ -1,0 +1,54 @@
+/*
+ * Tabs built on the native exclusive accordion: <details name="..."> means the
+ * browser keeps exactly one panel open, with zero JS for the toggling.
+ *
+ * Layout: each tab is a summary-only <details> followed by its panel as a
+ * sibling (see tabs-details.tsx). The root is a wrapping flexbox; `order` puts
+ * every trigger first (a tight row) and each panel after, and `flex: 0 0 100%`
+ * drops the open panel onto its own full-width row below.
+ *
+ * Why flex + sibling panel rather than a grid: a grid panel that spans the
+ * trigger columns distributes its width across those tracks, so a panel wider
+ * than its triggers inflates a trigger column (a visible gap). Flex items size
+ * independently, so the triggers stay tight no matter how wide the panel is.
+ * (`display: contents` on <details> to flatten into a grid was the previous
+ * approach; it also breaks flex `order`, hence the sibling-panel structure.)
+ */
+
+.tabs-details-root {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  column-gap: 10px;
+}
+
+.tabs-details-content {
+  order: 0; /* all triggers first, in a tight row */
+}
+
+.tabs-details-content > summary {
+  list-style: none; /* hide the disclosure triangle */
+}
+
+.tabs-details-content > summary::-webkit-details-marker {
+  display: none;
+}
+
+.tabs-details-panel {
+  order: 1; /* after every trigger... */
+  flex: 0 0 100%; /* ...on its own full-width row */
+  display: none;
+}
+
+/* The panel is the immediate next sibling of its <details>. */
+.tabs-details-content[open] + .tabs-details-panel {
+  display: block;
+}
+
+/*
+ * The selected state - a static rule, no inline <style> needed. This is the
+ * whole point of the details-based approach versus the radio-group version.
+ */
+.tabs-details-content[open] > summary {
+  text-decoration: underline;
+}

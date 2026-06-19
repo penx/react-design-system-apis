@@ -1,0 +1,35 @@
+/*
+ * Presentational only - same as TabsElement. Panel visibility is set by the element
+ * (`hidden` on inactive panels); the active trigger keys off data-state.
+ */
+
+.tabs-element-root {
+  display: block;
+}
+
+ds-tabs [data-tabs-list] {
+  display: flex;
+  gap: 10px;
+}
+
+/* Triggers are <button>s; reset them to read like inline tab labels. */
+ds-tabs [data-tabs-trigger] {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+ds-tabs [data-tabs-trigger][data-state="active"] {
+  text-decoration: underline;
+}
+
+/*
+ * No-JS baseline: show every panel before the element upgrades. Unlike TabsElement
+ * there is no :target fallback - selection is wired entirely at runtime, which
+ * is exactly what frees the React parts from needing a shared id (and Context).
+ */
+ds-tabs:not(:defined) [data-tabs-content] {
+  display: block;
+}
