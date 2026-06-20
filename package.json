@@ -5,10 +5,15 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,md}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,md}\"",
+    "coverage": "pnpm --filter astro test:e2e:coverage && pnpm --filter vite test:e2e:coverage && pnpm coverage:merge",
+    "coverage:merge": "node scripts/merge-coverage.mjs"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-lib-report": "^3.0.1",
+    "istanbul-reports": "^3.2.0",
     "prettier": "^3.2.5",
     "turbo": "^2.5.1"
   },
