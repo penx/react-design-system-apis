@@ -7,7 +7,9 @@
     "dev": "vite --clearScreen false",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint \"src/**/*.{ts,tsx}\""
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "test:e2e": "playwright test",
+    "test:e2e:coverage": "E2E_COVERAGE=true playwright test; node e2e/generate-reports.mjs"
   },
   "dependencies": {
     "@repo/ds": "workspace:*",
@@ -15,13 +17,19 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.2.0",
     "eslint": "^8.57.0",
+    "istanbul-lib-coverage": "^3.2.2",
+    "istanbul-lib-report": "^3.0.1",
+    "istanbul-reports": "^3.2.0",
+    "playwright": "^1.59.1",
     "typescript": "5.5.4",
+    "v8-to-istanbul": "^9.3.0",
     "vite": "^5.1.4"
   }
 }

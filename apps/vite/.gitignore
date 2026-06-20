@@ -1,0 +1,8 @@
+# build output
+dist/
+
+# playwright + coverage
+test-results/
+playwright-report/
+coverage/
+e2e/.v8/
