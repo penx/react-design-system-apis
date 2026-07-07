@@ -39,10 +39,14 @@ test("instances are independent", async ({ page }) => {
     .getByRole("tab", { name: "Settings" })
     .click();
   await expect(
-    page.locator('[data-testid="demo-h"]').getByRole("tab", { name: "Settings" }),
+    page
+      .locator('[data-testid="demo-h"]')
+      .getByRole("tab", { name: "Settings" }),
   ).toHaveAttribute("aria-selected", "true");
   await expect(
-    page.locator('[data-testid="demo-v"]').getByRole("tab", { name: "Account" }),
+    page
+      .locator('[data-testid="demo-v"]')
+      .getByRole("tab", { name: "Account" }),
   ).toHaveAttribute("aria-selected", "true");
 });
 

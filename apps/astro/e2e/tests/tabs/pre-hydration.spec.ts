@@ -42,7 +42,9 @@ test('controlled "report": a pre-hydration pick is adopted over the value', asyn
   await page.goto("/test/controlled", { waitUntil: "commit" });
 
   // Controlled value is "account"; pick "settings" before hydration.
-  await page.locator('[data-testid="ctrl-cs"] label[for="cs-settings"]').click();
+  await page
+    .locator('[data-testid="ctrl-cs"] label[for="cs-settings"]')
+    .click();
   await expect(page.locator("#cs-settings")).toBeChecked();
 
   release();

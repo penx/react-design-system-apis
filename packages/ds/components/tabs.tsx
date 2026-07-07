@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useId, useRef } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useRef,
+} from "react";
 import "./ds-tabs"; // registers <ds-tabs> when this module ships
 import "./tabs.css";
 
@@ -76,7 +82,8 @@ function useHandleInteractionBeforeHydration(
     const reports = value === undefined || preHydration === "report";
     if (!reports) return;
     const current = selectedValue(el);
-    if (current && current !== (value ?? defaultValue)) onValueChange?.(current);
+    if (current && current !== (value ?? defaultValue))
+      onValueChange?.(current);
   }, [ref, value, defaultValue, preHydration, onValueChange]);
 }
 
@@ -148,7 +155,9 @@ export const Root: React.FC<{
   );
 };
 
-export const List: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+export const List: React.FC<{ children?: React.ReactNode }> = ({
+  children,
+}) => (
   // suppressHydrationWarning: element-owned attributes added on upgrade (see Root).
   <div data-tabs-list="" suppressHydrationWarning>
     {children}

@@ -105,12 +105,15 @@ if (
 
     private radioOf(value: string): HTMLInputElement | null {
       const panel = this.panels.find((p) => p.dataset.value === value);
-      return panel?.querySelector<HTMLInputElement>('input[type="radio"]') ?? null;
+      return (
+        panel?.querySelector<HTMLInputElement>('input[type="radio"]') ?? null
+      );
     }
 
     private checkedValue(): string | undefined {
       return this.panels.find(
-        (p) => p.querySelector<HTMLInputElement>('input[type="radio"]')?.checked,
+        (p) =>
+          p.querySelector<HTMLInputElement>('input[type="radio"]')?.checked,
       )?.dataset.value;
     }
 
@@ -153,7 +156,8 @@ if (
       // semantics give us "no event on mount" and "no event on re-select" free.
       this.addEventListener("change", (e) => {
         const target = e.target as HTMLElement | null;
-        if (!target?.matches('[data-tabs-content] > input[type="radio"]')) return;
+        if (!target?.matches('[data-tabs-content] > input[type="radio"]'))
+          return;
         const value = this.checkedValue();
         if (value !== undefined && value !== this.dataset.value) {
           this.applyState(value, true);

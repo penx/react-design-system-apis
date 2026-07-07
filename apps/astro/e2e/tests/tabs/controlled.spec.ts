@@ -16,7 +16,9 @@ test.beforeEach(async ({ page }) => {
 
 test("the active tab reflects the controlled value", async ({ page }) => {
   await expect(
-    page.locator('[data-testid="ctrl-cv"]').getByRole("tab", { name: "Account" }),
+    page
+      .locator('[data-testid="ctrl-cv"]')
+      .getByRole("tab", { name: "Account" }),
   ).toHaveAttribute("aria-selected", "true");
 });
 
@@ -25,7 +27,9 @@ test("a programmatic value change switches tab without echoing onValueChange", a
 }) => {
   await page.locator('[data-testid="cv-ext"]').click();
   await expect(
-    page.locator('[data-testid="ctrl-cv"]').getByRole("tab", { name: "Settings" }),
+    page
+      .locator('[data-testid="ctrl-cv"]')
+      .getByRole("tab", { name: "Settings" }),
   ).toHaveAttribute("aria-selected", "true");
   await expect(page.locator('[data-testid="cv-value"]')).toHaveText("settings");
   await expect(page.locator('[data-testid="cv-changes"]')).toHaveText("0");
@@ -36,10 +40,14 @@ test("user interaction is reported through onValueChange", async ({ page }) => {
     .locator('[data-testid="ctrl-cv"]')
     .getByRole("tab", { name: "Documents" })
     .click();
-  await expect(page.locator('[data-testid="cv-value"]')).toHaveText("documents");
+  await expect(page.locator('[data-testid="cv-value"]')).toHaveText(
+    "documents",
+  );
   await expect(page.locator('[data-testid="cv-changes"]')).toHaveText("1");
   await expect(
-    page.locator('[data-testid="ctrl-cv"]').getByRole("tab", { name: "Documents" }),
+    page
+      .locator('[data-testid="ctrl-cv"]')
+      .getByRole("tab", { name: "Documents" }),
   ).toHaveAttribute("aria-selected", "true");
 });
 
