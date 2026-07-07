@@ -18,7 +18,7 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-non-null-assertion": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "error",
     // Rules of React from react-hooks v7: no ref read/write during render, and
     // no setState during render.
     "react-hooks/refs": "error",
