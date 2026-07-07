@@ -6,19 +6,16 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     "prettier",
   ],
-  plugins: ["@typescript-eslint", "react-hooks", "react-compiler"],
+  plugins: ["@typescript-eslint"],
   parserOptions: {
     sourceType: "module",
     ecmaVersion: 2020,
   },
   rules: {
     "@typescript-eslint/no-non-null-assertion": "off",
-    "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    "react-hooks/refs": "error",
-    "react-hooks/set-state-in-render": "error",
-    "react-compiler/react-compiler": "error",
   },
 };
