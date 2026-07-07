@@ -10,6 +10,7 @@ Building stateful Design System components that work across React Architectures,
 - When hydrated, a component should behave like a standard stateful component to its React consumer; hydration only adds React event props like `onClick` and `onValueChange`.
 - Maintain state when enhanced: a selection made before the element upgrades or the app hydrates should carry over, not reset.
 - Add accessibility semantics, but [No ARIA is better than Bad ARIA][no-bad-aria]: add a role only once it can be backed.
+- Where client JavaScript is used, follow the [APG Patterns][apg-patterns] for example good practices, and only diverge from them where there is good reason.
 - Build with React, but [minimize framework lock-in][framework-agnostic] so core behavior does not depend heavily on it.
 
 ## Example APIs
@@ -28,6 +29,7 @@ semantics to you:
 [overlays-talk]: https://talks.hiddedevries.nl/VZNuWJ/slides
 [framework-agnostic]: https://piccalil.li/blog/framework-agnostic-design-systems-part-1/
 [no-bad-aria]: https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/
+[apg-patterns]: https://www.w3.org/WAI/ARIA/apg/patterns/
 [popover-api]: https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
 [details]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Element/details
 [radio]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Element/input/radio
