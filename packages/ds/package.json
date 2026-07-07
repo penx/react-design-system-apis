@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts\""
+    "lint": "eslint \"**/*.{ts,tsx}\""
   },
   "peerDependencies": {
     "react": "^18.2.0",
