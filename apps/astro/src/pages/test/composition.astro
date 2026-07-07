@@ -1,0 +1,13 @@
+---
+import MultiDemo from "../../components/MultiDemo.tsx";
+---
+
+<html lang="en">
+  <body>
+    <!-- Two instances in one React tree, no explicit ids: useId disambiguates. -->
+    <MultiDemo client:load />
+    <script>
+      import "@repo/ds/tabs/define";
+    </script>
+  </body>
+</html>

@@ -3,6 +3,12 @@ dist/
 # generated types
 .astro/
 
+# playwright + coverage
+test-results/
+playwright-report/
+coverage/
+e2e/.v8/
+
 # dependencies
 node_modules/
 

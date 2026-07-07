@@ -1,0 +1,14 @@
+---
+import TabsDemo from "../../components/TabsDemo.tsx";
+---
+
+<html lang="en">
+  <body>
+    <!-- No client directive: SSR markup that the define script upgrades to a
+         tablist, but React never hydrates. -->
+    <TabsDemo id="up" />
+    <script>
+      import "@repo/ds/tabs/define";
+    </script>
+  </body>
+</html>
