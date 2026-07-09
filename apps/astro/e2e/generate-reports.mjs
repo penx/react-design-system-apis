@@ -25,7 +25,8 @@ const keep = (file) => {
   const norm = file.replaceAll("\\", "/");
   return (
     norm.endsWith("packages/ds/components/tabs.tsx") ||
-    norm.endsWith("packages/ds/components/ds-tabs.ts")
+    norm.endsWith("packages/ds/components/ds-tabs.ts") ||
+    norm.endsWith("packages/ds/components/modal.tsx")
   );
 };
 

@@ -1,0 +1,28 @@
+.ds-modal {
+  margin: auto;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.ds-modal::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.ds-modal-title {
+  margin: 0;
+  padding: 16px 16px 8px;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.ds-modal-description {
+  margin: 0;
+  padding: 0 16px 16px;
+}
