@@ -83,7 +83,9 @@ const ModalDemo = () => (
       <Modal.Trigger data-testid="open">Open</Modal.Trigger>
       <Modal.Content>
         <Modal.Title>Account settings</Modal.Title>
-        <Modal.Description>Make changes to your account here.</Modal.Description>
+        <Modal.Description>
+          Make changes to your account here.
+        </Modal.Description>
         <div style={{ padding: "0 16px 16px" }}>
           <Modal.Close data-testid="done">Done</Modal.Close>
         </div>

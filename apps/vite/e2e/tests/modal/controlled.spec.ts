@@ -12,7 +12,9 @@ const dialog = (page: import("../../helpers/fixture").Page) =>
 test("starts closed; the in-modal trigger opens it and syncs state", async ({
   page,
 }) => {
-  await expect(page.locator('[data-testid="cmodal-state"]')).toHaveText("false");
+  await expect(page.locator('[data-testid="cmodal-state"]')).toHaveText(
+    "false",
+  );
   await expect(dialog(page)).toBeHidden();
   await page.locator('[data-testid="cmodal-trigger"]').click();
   await expect(dialog(page)).toBeVisible();
@@ -35,5 +37,7 @@ test("Escape closes it and reports back through onOpenChange", async ({
   await expect(dialog(page)).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(dialog(page)).toBeHidden();
-  await expect(page.locator('[data-testid="cmodal-state"]')).toHaveText("false");
+  await expect(page.locator('[data-testid="cmodal-state"]')).toHaveText(
+    "false",
+  );
 });

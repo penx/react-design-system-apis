@@ -12,7 +12,11 @@ const ModalContext = createContext<{
   titleId: string;
   descriptionId: string;
   onOpenChange?: (open: boolean) => void;
-}>({ id: "ds-modal", titleId: "ds-modal-title", descriptionId: "ds-modal-desc" });
+}>({
+  id: "ds-modal",
+  titleId: "ds-modal-title",
+  descriptionId: "ds-modal-desc",
+});
 
 // Separate from the ids context so that stays ref-free (a ref beside the ids
 // makes react-hooks/refs flag every ctx read as a render-time ref access).
