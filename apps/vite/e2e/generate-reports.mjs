@@ -51,6 +51,7 @@ async function main() {
   reports.create("html").execute(context);
   reports.create("lcovonly").execute(context);
   reports.create("json-summary").execute(context);
+  reports.create("json").execute(context); // coverage-final.json, for merging
 
   rmSync(v8Dir, { recursive: true, force: true });
   console.log(`\nCoverage report written to ${relative(repoRoot, outDir)}/`);

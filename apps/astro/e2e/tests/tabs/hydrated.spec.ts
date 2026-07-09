@@ -50,7 +50,10 @@ test("instances are independent", async ({ page }) => {
   ).toHaveAttribute("aria-selected", "true");
 });
 
-test("logs no hydration warnings or errors", async ({ page }) => {
+// Production smoke check for runtime/thrown errors. React's hydration
+// mismatch warnings are dev-only (stripped here), so they're caught instead by
+// hydration-warnings.spec.ts, which runs against a dev-React build.
+test("logs no console errors (production)", async ({ page }) => {
   const errors: string[] = [];
   page.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
