@@ -1,14 +1,7 @@
 import * as React from "react";
 import { Tabs } from "@repo/ds";
 
-// `id` is required when more than one instance renders on a page: each carries a
-// hidden radio group keyed by name, so without distinct ids two instances would
-// group together and emit duplicate DOM ids.
-//
-// There is no React on the client in this app, so event props like
-// onValueChange would never fire - the demo is intentionally structural. The
-// tab switching that works without JS comes from the radio fallback; the richer
-// tablist behaviour comes from the <ds-tabs> upgrade.
+// `id` scopes the radio-group name/ids; distinct per instance on a page.
 export function TabsDemo({ id }: { id: string }) {
   return (
     <Tabs.Root id={id} defaultValue="account">
