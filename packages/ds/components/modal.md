@@ -14,7 +14,7 @@ with **no JavaScript**.
 ## Optionally controlled
 
 Uncontrolled needs no JS. As an opt-in JS layer over the same native element, `Root` accepts
-`onOpenChange` (wired with the `<dialog>`'s synthetic `onToggle`, so it reports user *and*
+`onOpenChange` (wired with the `<dialog>`'s synthetic `onToggle`, so it reports user _and_
 programmatic open/close with no effect) and `open` (drives the popover via
 `showPopover()`/`hidePopover()` - the one unavoidable effect, isolated in `useControlledPopover`,
 since the Popover API has no declarative open prop). The triggers keep working natively even
