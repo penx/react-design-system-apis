@@ -1,0 +1,24 @@
+{
+  "name": "11ty",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@repo/ds": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.24.2",
+    "tsx": "^4.19.2"
+  }
+}

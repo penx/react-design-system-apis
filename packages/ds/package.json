@@ -1,6 +1,7 @@
 {
   "name": "@repo/ds",
   "version": "0.0.0",
+  "type": "module",
   "exports": {
     ".": "./index.ts",
     "./style.css": "./style.css",
