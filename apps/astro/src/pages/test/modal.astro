@@ -1,0 +1,13 @@
+---
+import ModalDemo from "../../components/ModalDemo.tsx";
+---
+
+<html lang="en">
+  <body>
+    <!-- Un-hydrated SSR: the native popover opens/closes with no JS at all. -->
+    <ModalDemo id="ssr" />
+
+    <!-- Hydrated island: identical markup, also works. -->
+    <ModalDemo client:load id="hyd" />
+  </body>
+</html>

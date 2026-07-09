@@ -1,0 +1,13 @@
+---
+import NestedModalDemo from "../../components/NestedModalDemo.tsx";
+---
+
+<html lang="en">
+  <body>
+    <!-- Un-hydrated SSR: nested native popovers work with no JS. -->
+    <NestedModalDemo id="ssr" />
+
+    <!-- Hydrated island: identical markup. -->
+    <NestedModalDemo client:load id="hyd" />
+  </body>
+</html>

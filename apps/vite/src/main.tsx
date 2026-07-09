@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "@repo/ds/style.css";
-import { Tabs } from "@repo/ds";
+import "@repo/ds/components/modal.css";
+import { Modal, Tabs } from "@repo/ds";
 
 const Uncontrolled = () => {
   const [last, setLast] = useState("");
@@ -76,6 +77,50 @@ const Controlled = () => {
   );
 };
 
+const ModalDemo = () => (
+  <div data-testid="modal">
+    <Modal.Root>
+      <Modal.Trigger data-testid="open">Open</Modal.Trigger>
+      <Modal.Content>
+        <Modal.Title>Account settings</Modal.Title>
+        <Modal.Description>Make changes to your account here.</Modal.Description>
+        <div style={{ padding: "0 16px 16px" }}>
+          <Modal.Close data-testid="done">Done</Modal.Close>
+        </div>
+      </Modal.Content>
+    </Modal.Root>
+  </div>
+);
+
+const ControlledModal = () => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div data-testid="cmodal">
+      <p>
+        Open: <strong data-testid="cmodal-state">{String(open)}</strong>{" "}
+        {/* Drives the modal from outside, programmatically. */}
+        <button
+          type="button"
+          data-testid="cmodal-ext-open"
+          onClick={() => setOpen(true)}
+        >
+          Open externally
+        </button>
+      </p>
+      <Modal.Root open={open} onOpenChange={setOpen}>
+        <Modal.Trigger data-testid="cmodal-trigger">Open</Modal.Trigger>
+        <Modal.Content>
+          <Modal.Title>Controlled</Modal.Title>
+          <Modal.Description>Driven by React state.</Modal.Description>
+          <div style={{ padding: "0 16px 16px" }}>
+            <Modal.Close data-testid="cmodal-done">Done</Modal.Close>
+          </div>
+        </Modal.Content>
+      </Modal.Root>
+    </div>
+  );
+};
+
 const App = () => (
   <div>
     <h2>Uncontrolled</h2>
@@ -83,6 +128,12 @@ const App = () => (
 
     <h2>Controlled</h2>
     <Controlled />
+
+    <h2>Modal</h2>
+    <ModalDemo />
+
+    <h2>Controlled Modal</h2>
+    <ControlledModal />
   </div>
 );
 

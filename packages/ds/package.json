@@ -6,7 +6,9 @@
     "./style.css": "./style.css",
     "./components/tabs.css": "./components/tabs.css",
     "./tabs": "./components/tabs.tsx",
-    "./tabs/define": "./components/ds-tabs.ts"
+    "./tabs/define": "./components/ds-tabs.ts",
+    "./components/modal.css": "./components/modal.css",
+    "./modal": "./components/modal.tsx"
   },
   "license": "MIT",
   "scripts": {
