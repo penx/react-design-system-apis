@@ -9,4 +9,3 @@ export default defineConfig({
     minify: process.env.E2E_COVERAGE === "true" ? false : "esbuild",
   },
 });
-
