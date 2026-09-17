@@ -1,11 +1,15 @@
 ---
+// Join BASE_URL (astro's configured `base`, "/" locally) with the route so the
+// link is correct both at the root and under a Pages sub-path.
+const base = import.meta.env.BASE_URL;
+const tabsHref = `${base.replace(/\/$/, "")}/tabs`;
 ---
 
 <html lang="en">
   <body>
     <h1>React Design System APIs</h1>
     <ul>
-      <li><a href="/tabs">Tabs</a></li>
+      <li><a href={tabsHref}>Tabs</a></li>
     </ul>
   </body>
 </html>

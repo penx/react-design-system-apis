@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Design System APIs</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        line-height: 1.5;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+      }
+      main {
+        width: 100%;
+        max-width: 40rem;
+      }
+      h1 {
+        margin: 0 0 0.25rem;
+      }
+      p.lede {
+        margin: 0 0 2rem;
+        opacity: 0.8;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 1rem;
+      }
+      a.card {
+        display: block;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+      }
+      a.card:hover {
+        border-color: color-mix(in srgb, currentColor 45%, transparent);
+      }
+      a.card strong {
+        font-size: 1.15rem;
+      }
+      a.card span {
+        display: block;
+        opacity: 0.75;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>React Design System APIs</h1>
+      <p class="lede">
+        One design system (a progressively-enhanced Tabs component) consumed
+        across three build tools. Each demo is a static site.
+      </p>
+      <ul>
+        <li>
+          <a class="card" href="astro/">
+            <strong>Astro</strong>
+            <span>Static HTML with React islands (SSG + hydration)</span>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="vite/">
+            <strong>Vite</strong>
+            <span>Client-rendered React single-page app</span>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="11ty/">
+            <strong>Eleventy</strong>
+            <span>No framework — the custom element and CSS only</span>
+          </a>
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>

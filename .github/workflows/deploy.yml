@@ -1,0 +1,79 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege for the build; Pages deploy needs pages + id-token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; don't cancel an in-flight deploy.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # Each app is served from a sub-path of the project site
+    # (https://<owner>.github.io/<repo>/), so it must be built with a matching
+    # base. BASE_PATH is read by each app's config and is set only here.
+    env:
+      REPO: ${{ github.event.repository.name }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build astro
+        run: pnpm --filter astro build
+        env:
+          BASE_PATH: /${{ env.REPO }}/astro
+
+      - name: Build vite
+        run: pnpm --filter vite build
+        env:
+          BASE_PATH: /${{ env.REPO }}/vite/
+
+      - name: Build 11ty
+        run: pnpm --filter 11ty build
+        env:
+          BASE_PATH: /${{ env.REPO }}/11ty/
+
+      - name: Assemble Pages site
+        run: |
+          mkdir -p _site
+          cp .github/pages/index.html _site/index.html
+          cp -r apps/astro/dist _site/astro
+          cp -r apps/vite/dist _site/vite
+          cp -r apps/11ty/dist _site/11ty
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
