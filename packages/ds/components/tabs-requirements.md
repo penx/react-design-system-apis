@@ -1,4 +1,3 @@
-
 ## Requirements
 
 Derived from the implementation, grouped for integration testing. "Upgraded"
