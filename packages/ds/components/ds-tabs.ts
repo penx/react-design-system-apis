@@ -218,7 +218,7 @@ if (
       const nextKey =
         this.orientation === "vertical" ? "ArrowDown" : "ArrowRight";
       const prevKey = this.orientation === "vertical" ? "ArrowUp" : "ArrowLeft";
-      let next = -1;
+      let next: number;
       switch (e.key) {
         case nextKey:
           next = (current + 1) % triggers.length;
