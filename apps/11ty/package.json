@@ -10,15 +10,15 @@
   "dependencies": {
     "@repo/ds": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy": "^3.1.8",
     "@types/node": "^22.10.0",
-    "esbuild": "^0.24.2",
-    "tsx": "^4.19.2"
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15"
   }
 }

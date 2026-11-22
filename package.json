@@ -10,13 +10,13 @@
     "coverage:merge": "node scripts/merge-coverage.mjs"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
+    "eslint": "^10.15.0",
     "istanbul-lib-coverage": "^3.2.2",
     "istanbul-lib-report": "^3.0.1",
     "istanbul-reports": "^3.2.0",
-    "prettier": "^3.2.5",
-    "turbo": "^2.5.1"
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.13"
   },
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@12.21.0",
   "name": "with-vite-react"
 }
